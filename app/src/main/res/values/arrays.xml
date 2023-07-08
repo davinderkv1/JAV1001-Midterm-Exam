@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="convert_from_array">
+        <item>Kilometers</item>
+        <item>Miles</item>
+        <item>Centimeters</item>
+        <item>Inches</item>
+        <item>Celsius</item>
+        <item>Kelvin</item>
+        <item>Fahrenheit</item>
+    </string-array>
+
+    <string-array name="convert_to_array">
+        <item>Kilometers</item>
+        <item>Miles</item>
+        <item>Centimeters</item>
+        <item>Inches</item>
+        <item>Celsius</item>
+        <item>Kelvin</item>
+        <item>Fahrenheit</item>
+    </string-array>
+</resources>
