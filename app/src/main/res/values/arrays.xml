@@ -7,16 +7,14 @@
         <item>Inches</item>
         <item>Celsius</item>
         <item>Kelvin</item>
-        <item>Fahrenheit</item>
     </string-array>
 
     <string-array name="convert_to_array">
-        <item>Kilometers</item>
         <item>Miles</item>
+        <item>Kilometers</item>
         <item>Centimeters</item>
         <item>Inches</item>
-        <item>Celsius</item>
-        <item>Kelvin</item>
         <item>Fahrenheit</item>
+        <item>Celsius</item>
     </string-array>
 </resources>

@@ -3,7 +3,6 @@ package com.converter.app
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
@@ -31,37 +30,6 @@ class MainActivity : AppCompatActivity() {
         buttonConvert.setOnClickListener {
             convertValue()
         }
-
-        // Set item selection listeners for the Spinners
-        convertFrom.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                convertValue()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Do nothing
-            }
-        }
-
-        convertTo.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                convertValue()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Do nothing
-            }
-        }
     }
 
     // Function to perform the conversion
@@ -74,13 +42,44 @@ class MainActivity : AppCompatActivity() {
             // Perform the conversion based on the selected units
             val result = when (convertFrom.selectedItem.toString()) {
                 "Kilometers" -> when (convertTo.selectedItem.toString()) {
-                    "Miles" -> inputValue * 0.62
+                    "Miles" -> inputValue * 0.621371
                     "Centimeters" -> inputValue * 100000
-                    "Inches" -> inputValue * 39370
-                    "Kilometers" -> inputValue
+                    "Inches" -> inputValue * 39370.1
                     else -> null
                 }
-                // Add more cases for other unit conversions
+                "Miles" -> when (convertTo.selectedItem.toString()) {
+                    "Kilometers" -> inputValue * 1.60934
+                    "Centimeters" -> inputValue * 160934
+                    "Inches" -> inputValue * 63360
+                    else -> null
+                }
+                "Centimeters" -> when (convertTo.selectedItem.toString()) {
+                    "Kilometers" -> inputValue / 100000
+                    "Miles" -> inputValue / 160934
+                    "Inches" -> inputValue / 2.54
+                    else -> null
+                }
+                "Inches" -> when (convertTo.selectedItem.toString()) {
+                    "Kilometers" -> inputValue / 39370.1
+                    "Miles" -> inputValue / 63360
+                    "Centimeters" -> inputValue * 2.54
+                    else -> null
+                }
+                "Celsius" -> when (convertTo.selectedItem.toString()) {
+                    "Kelvin" -> inputValue + 273.15
+                    "Fahrenheit" -> inputValue * 9 / 5 + 32
+                    else -> null
+                }
+                "Kelvin" -> when (convertTo.selectedItem.toString()) {
+                    "Celsius" -> inputValue - 273.15
+                    "Fahrenheit" -> inputValue * 9 / 5 - 459.67
+                    else -> null
+                }
+                "Fahrenheit" -> when (convertTo.selectedItem.toString()) {
+                    "Celsius" -> (inputValue - 32) * 5 / 9
+                    "Kelvin" -> (inputValue + 459.67) * 5 / 9
+                    else -> null
+                }
                 else -> null
             }
 
@@ -95,4 +94,5 @@ class MainActivity : AppCompatActivity() {
             output.text = "Enter a valid value"
         }
     }
+
 }
